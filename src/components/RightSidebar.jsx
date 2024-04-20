@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import ListSiderbar from './ListSiderbar'
 import HamburgerSwap from '../shared/ui/HamburgerSwap'
+import { Link } from 'react-router-dom'
 
 function RightSidebar({
 	openSidebarLink,
@@ -15,12 +16,14 @@ function RightSidebar({
 			style={{ boxShadow: '0px 4px 16px 0px #121212' }}
 		>
 			<div className='flex items-center justify-center font-Itim uppercase text-[45px] py-[20px] relative'>
-				<div className='md:flex gap-2 md:gap-6 items-center md:text-[45px] text-[25px] hidden'>
-					<h1>bee</h1>
-					<div className='bg-[#44444480] w-[40px] h-[80px] md:w-[77px] md:h-[117px] rounded-[50%] transform rotate-[55deg] flex justify-center items-center'>
-						<h1 className='transform -rotate-[55deg]'>on!</h1>
+				<Link to={'/'}>
+					<div className='md:flex gap-2 md:gap-6 items-center md:text-[45px] text-[25px] hidden cursor-pointer'>
+						<h1>bee</h1>
+						<div className='bg-[#44444480] w-[40px] h-[80px] md:w-[77px] md:h-[117px] rounded-[50%] transform rotate-[55deg] flex justify-center items-center'>
+							<h1 className='transform -rotate-[55deg]'>on!</h1>
+						</div>
 					</div>
-				</div>
+				</Link>
 			</div>
 
 			<ul
