@@ -7,7 +7,7 @@ function AdminPanel() {
 	return (
 		<>
 			{isLogged ? (
-				<div>aa</div>
+				<div>Malades :)</div>
 			) : (
 				<div className='flex h-screen w-full justify-center items-center'>
 					<input
