@@ -10,11 +10,12 @@ function RightSidebar({
 }) {
 	return (
 		<div
-			className={`bg-[#171717] h-[100vh] z-[99] ${
-				openSidebarLink ? 'w-full absolute' : ''
-			} w-0 md:w-[450px]`}
+			className={`bg-[#171717] h-[100vh] z-[300] fixed ${
+				openSidebarLink ? 'w-[60%] absolute' : ''
+			} w-0 md:w-[283px]`}
 			style={{ boxShadow: '0px 4px 16px 0px #121212' }}
 		>
+			
 			<div className='flex items-center justify-center font-Itim uppercase text-[45px] py-[20px] relative'>
 				<Link to={'/'}>
 					<div className='md:flex gap-2 md:gap-6 items-center md:text-[45px] text-[25px] hidden cursor-pointer'>

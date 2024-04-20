@@ -11,10 +11,10 @@ function Navbar({ handleOpenSidebar }) {
 	return (
 		<>
 			<div
-				className='bg-[#171717] w-full h-[80px] flex justify-between items-center'
+				className='navbar__top bg-[#171717] w-full h-[80px] flex justify-between items-center fixed right-0 z-[300]'
 				style={{ boxShadow: '0px 4px 16px 0px #121212' }}
 			>
-				<div className='flex md:hidden ml-[20px] z-[100]'>
+				<div className='flex md:hidden ml-[20px] fixed z-[1000]'>
 					<HamburgerSwap handleOpenSidebar={handleOpenSidebar} />
 				</div>
 
@@ -38,7 +38,7 @@ function Navbar({ handleOpenSidebar }) {
 								className='dropdown-content z-[1] menu p-2 shadow rounded-box w-52 bg-[#252525] mt-[10px]'
 							>
 								<li>
-									<a>Регистрация</a>
+									<a href='/register'>Регистрация</a>
 								</li>
 							</ul>
 						</div>
