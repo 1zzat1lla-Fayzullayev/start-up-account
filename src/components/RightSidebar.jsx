@@ -1,0 +1,41 @@
+import React, { useState } from 'react'
+import ListSiderbar from './ListSiderbar'
+import HamburgerSwap from '../shared/ui/HamburgerSwap'
+
+function RightSidebar({
+	openSidebarLink,
+	setOpenSidebarLink,
+	handleOpenSidebar,
+}) {
+	return (
+		<div
+			className={`bg-[#171717] h-[100vh] z-[99] ${
+				openSidebarLink ? 'w-full absolute' : ''
+			} w-0 md:w-[450px]`}
+			style={{ boxShadow: '0px 4px 16px 0px #121212' }}
+		>
+			<div className='flex items-center justify-center font-Itim uppercase text-[45px] py-[20px] relative'>
+				<div className='md:flex gap-2 md:gap-6 items-center md:text-[45px] text-[25px] hidden'>
+					<h1>bee</h1>
+					<div className='bg-[#44444480] w-[40px] h-[80px] md:w-[77px] md:h-[117px] rounded-[50%] transform rotate-[55deg] flex justify-center items-center'>
+						<h1 className='transform -rotate-[55deg]'>on!</h1>
+					</div>
+				</div>
+			</div>
+
+			<ul
+				className={`font-Montserrat md:mr-[50px] justify-center items-center flex-col gap-2 flex md:flex mt-[80px] md:mt-0 ${
+					openSidebarLink ? '' : 'hidden'
+				}`}
+			>
+				<ListSiderbar
+					openSidebarLink={openSidebarLink}
+					setOpenSidebarLink={setOpenSidebarLink}
+					handleOpenSidebar={handleOpenSidebar}
+				/>
+			</ul>
+		</div>
+	)
+}
+
+export default RightSidebar
