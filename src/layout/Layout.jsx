@@ -9,6 +9,13 @@ function Layout() {
 	const handleOpenSidebar = () => {
 		setOpenSidebarLink(!openSidebarLink)
 	}
+
+	const [isOpen, setIsOpen] = useState(false)
+
+	const variants = {
+		open: { opacity: 1, x: 0 },
+		closed: { opacity: 1, x: '1%' },
+	}
 	return (
 		<>
 			<div>

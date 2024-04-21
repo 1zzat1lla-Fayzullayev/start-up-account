@@ -1,22 +1,59 @@
-import React, { useState } from 'react'
-import user from '../assets/user.png'
+import React, { useEffect, useState } from 'react'
 import HamburgerSwap from '../shared/ui/HamburgerSwap'
 import NumberModal from '../shared/ui/NumberModal'
+import { motion } from 'framer-motion'
+import { auth, logoutUser } from '../firebase/config'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { onAuthStateChanged } from 'firebase/auth'
+import userImg from '../assets/user.png'
 
 function Navbar({ handleOpenSidebar }) {
 	const handleOpenModal = () => {
 		document.getElementById('my_modal_3').showModal()
 	}
 
+	const [user] = useAuthState(auth)
+	const [userPhoto, setUserPhoto] = useState(null)
+	const [displayName, setDisplayName] = useState(null)
+
+	const handleLogOut = async () => {
+		try {
+			await logoutUser()
+		} catch (e) {
+			console.error('Error logging out: ', e.message)
+		}
+	}
+
+	useEffect(() => {
+		const unsubscribe = onAuthStateChanged(auth, user => {
+			try {
+				if (user) {
+					const { displayName, photoURL } = user
+					setDisplayName(displayName || user.email)
+					setUserPhoto(photoURL || userImg)
+					localStorage.setItem('displayName', displayName)
+				} else {
+					setDisplayName(null)
+					setUserPhoto(userImg)
+					localStorage.removeItem('displayName')
+				}
+			} catch (e) {
+				console.error('Error fetching user profile: ', e.message)
+			}
+		})
+
+		return () => unsubscribe()
+	}, [])
+
 	return (
 		<>
-			<div
+			<motion.div
 				className='navbar__top bg-[#171717] w-full h-[80px] flex justify-between items-center fixed right-0 z-[300]'
 				style={{ boxShadow: '0px 4px 16px 0px #121212' }}
 			>
-				<div className='flex md:hidden ml-[20px] fixed z-[1000]'>
+				<motion.div className='flex md:hidden ml-[20px] fixed z-[1000]'>
 					<HamburgerSwap handleOpenSidebar={handleOpenSidebar} />
-				</div>
+				</motion.div>
 
 				<div className='flex w-full justify-end gap-4 md:gap-0 md:justify-between items-center'>
 					<div className='md:ml-[20px]'>
@@ -31,20 +68,45 @@ function Navbar({ handleOpenSidebar }) {
 					<div className='mr-[20px]'>
 						<div className='dropdown dropdown-end'>
 							<div tabIndex={0} role='button'>
-								<img src={user} alt='user' />
+								{user ? (
+									<img
+										src={userPhoto}
+										alt='user'
+										className='rounded-full w-[50px]'
+									/>
+								) : (
+									<img
+										src={userImg}
+										alt='user'
+										className='rounded-full w-[50px]'
+									/>
+								)}
 							</div>
 							<ul
 								tabIndex={0}
-								className='dropdown-content z-[1] menu p-2 shadow rounded-box w-52 bg-[#252525] mt-[10px]'
+								className='dropdown-content z-[1] menu p-2 shadow rounded-box w-52 bg-[#252525] mt-[10px] font-Montserrat'
 							>
-								<li>
-									<a href='/register'>Регистрация</a>
-								</li>
+								{user ? (
+									<>
+										{displayName && (
+											<li>
+												<p>{displayName}</p>
+											</li>
+										)}
+										<li className='hover:bg-red-500 rounded-[10px]'>
+											<button onClick={handleLogOut}>Выход</button>
+										</li>
+									</>
+								) : (
+									<li>
+										<a href='/register'>Регистрация</a>
+									</li>
+								)}
 							</ul>
 						</div>
 					</div>
 				</div>
-			</div>
+			</motion.div>
 		</>
 	)
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Phone() {
-	return <div>zor narsa qberaman qaren aha</div>
+	return <div>nomer</div>
 }
 
 export default Phone

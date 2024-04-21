@@ -10,25 +10,30 @@ import HistoryPayment from './pages/HistoryPayment'
 import Register from './pages/Register'
 import Layout from './layout/Layout'
 import AdminLayout from './layout/AdminLayout'
+import { motion } from 'framer-motion'
+import { Toaster } from 'react-hot-toast'
 
 function App() {
 	return (
-		<BrowserRouter>
-			<Routes>
-				<Route path='/' element={<Layout />}>
-					<Route index element={<Home />} />
-					<Route path='/phone' element={<Phone />} />
-					<Route path='/card' element={<Card />} />
-					<Route path='/history-phone' element={<HistoryPhone />} />
-					<Route path='/history-payment' element={<HistoryPayment />} />
-				</Route>
-				<Route path='/register' element={<Register />} />
+		<>
+			<BrowserRouter>
+				<Routes>
+					<Route path='/' element={<Layout />}>
+						<Route index element={<Home />} />
+						<Route path='/phone' element={<Phone />} />
+						<Route path='/card' element={<Card />} />
+						<Route path='/history-phone' element={<HistoryPhone />} />
+						<Route path='/history-payment' element={<HistoryPayment />} />
+					</Route>
+					<Route path='/register' element={<Register />} />
 
-				<Route path='/admin' element={<AdminLayout />}>
-					<Route index element={<AdminPanel />} />
-				</Route>
-			</Routes>
-		</BrowserRouter>
+					<Route path='/admin' element={<AdminLayout />}>
+						<Route index element={<AdminPanel />} />
+					</Route>
+				</Routes>
+			</BrowserRouter>
+			<Toaster position='top-center' reverseOrder={false} />
+		</>
 	)
 }
 
