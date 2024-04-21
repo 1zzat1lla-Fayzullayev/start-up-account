@@ -98,7 +98,7 @@ function RegisterForm({ toggleForm }) {
 					/>
 					<a
 						onClick={toggleForm}
-						className='underline text-blue-500 text-[15px]'
+						className='underline text-blue-500 text-[15px] cursor-pointer'
 					>
 						Войти
 					</a>

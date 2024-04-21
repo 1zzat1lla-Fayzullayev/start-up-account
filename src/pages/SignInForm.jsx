@@ -93,7 +93,7 @@ function SignInForm({ toggleForm }) {
 					{/* Sign-in buttons */}
 					<a
 						onClick={toggleForm}
-						className='underline text-blue-500 text-[15px]'
+						className='underline text-blue-500 text-[15px] cursor-pointer'
 					>
 						Регистрация
 					</a>
