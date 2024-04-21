@@ -26,7 +26,7 @@ function ListSidebar({ openSidebarLink }) {
 							className='w-[30px] md:w-[40px]'
 						/>
 
-						<p className={'md:flex text-[12px] md:text-[17px]'}>Номера</p>
+						<p className={'md:flex text-[12px] md:text-[16px]'}>Номера</p>
 					</div>
 				</li>
 			</Link>
@@ -46,7 +46,7 @@ function ListSidebar({ openSidebarLink }) {
 							className='w-[30px] md:w-[40px]'
 						/>
 
-						<p className={'md:flex text-[12px] md:text-[17px]'}>
+						<p className={'md:flex text-[12px] md:text-[16px]'}>
 							Пополнить счет
 						</p>
 					</div>
@@ -68,7 +68,7 @@ function ListSidebar({ openSidebarLink }) {
 							className='w-[30px] md:w-[40px]'
 						/>
 
-						<p className={'md:flex text-[12px] md:text-[17px]'}>
+						<p className={'md:flex text-[12px] md:text-[16px]'}>
 							Избранные номера
 						</p>
 					</div>
@@ -90,7 +90,7 @@ function ListSidebar({ openSidebarLink }) {
 							className='w-[30px] md:w-[40px]'
 						/>
 
-						<p className={'md:flex text-[12px] md:text-[17px]'}>
+						<p className={'md:flex text-[12px] md:text-[16px]'}>
 							История покупок
 						</p>
 					</div>

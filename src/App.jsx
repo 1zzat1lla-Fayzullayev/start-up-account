@@ -26,7 +26,6 @@ function App() {
 						<Route path='/history-payment' element={<HistoryPayment />} />
 					</Route>
 					<Route path='/register' element={<Register />} />
-
 					<Route path='/admin' element={<AdminLayout />}>
 						<Route index element={<AdminPanel />} />
 					</Route>

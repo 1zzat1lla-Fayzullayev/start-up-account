@@ -21,7 +21,7 @@ function RightSidebar({
 
 	return (
 		<motion.div
-			className={`bg-[#171717] h-screen z-[300] fixed  w-full md:w-[283px]`}
+			className={`bg-[#171717] h-screen z-[300] fixed  w-full md:w-[300px]`}
 			style={{ boxShadow: '0px 4px 16px 0px #121212' }}
 			animate={openSidebarLink ? 'open' : 'closed'}
 			variants={sidebarVariants}
