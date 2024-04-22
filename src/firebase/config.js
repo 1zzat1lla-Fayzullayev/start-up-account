@@ -1,13 +1,12 @@
-// config.js
-
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
+import { getFirestore } from 'firebase/firestore'
 import {
 	createUserWithEmailAndPassword,
 	signInWithEmailAndPassword,
 	signOut,
 	signInWithPopup,
-	updateProfile, // Import updateProfile function
+	updateProfile,
 } from 'firebase/auth'
 import { GoogleAuthProvider } from 'firebase/auth'
 import toast from 'react-hot-toast'
@@ -28,6 +27,9 @@ const app = initializeApp(firebaseConfig)
 
 // Initialize Firebase Auth service
 const auth = getAuth(app)
+
+// Initialize Firestore
+const db = getFirestore(app) // Initialize Firestore using getFirestore
 
 // Function to register a new user with display name
 const registerUser = async (email, password, fullName) => {
@@ -62,7 +64,6 @@ const signInUser = async (email, password) => {
 		console.log('User signed in successfully:', user)
 		return user
 	} catch (error) {
-		// console.error('Error signing in:', error.message)
 		throw error
 	}
 }
@@ -92,4 +93,4 @@ const logoutUser = async () => {
 	}
 }
 
-export { auth, registerUser, signInUser, logoutUser, googleSignIn }
+export { auth, db, registerUser, signInUser, logoutUser, googleSignIn }
