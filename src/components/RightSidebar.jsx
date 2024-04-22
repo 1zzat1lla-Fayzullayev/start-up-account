@@ -38,7 +38,7 @@ function RightSidebar({
 			</div>
 
 			<ul
-				className={`font-Montserrat md:mr-[50px] justify-center items-center flex-col gap-2 flex md:flex mt-[80px] md:mt-0 ${
+				className={`font-Montserrat md:mr-[50px] justify-center items-center flex-col gap-2 flex md:flex mt-[80px] md:mt-0 fixed ${
 					openSidebarLink ? '' : 'hidden'
 				}`}
 			>

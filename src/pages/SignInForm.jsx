@@ -52,7 +52,7 @@ function SignInForm({ toggleForm }) {
 	return (
 		<>
 			<motion.div
-				className='font-Montserrat bg-[#171717] p-[15px] rounded-[10px]'
+				className='blur-bg font-Montserrat bg-[#17171755] p-[15px] rounded-[10px]'
 				initial={{ opacity: 0, scale: 0.7 }}
 				animate={{ opacity: 1, scale: 1 }}
 			>
@@ -98,14 +98,14 @@ function SignInForm({ toggleForm }) {
 						Регистрация
 					</a>
 					<button
-						className='flex justify-center items-center gap-2 bg-[#252525] rounded-[5px] p-2'
-						onClick={handleGoogleSignIn} // Call handleGoogleSignIn function when button is clicked
+						className='flex justify-center items-center gap-2 bg-[#252525] rounded-[5px] p-[6px] transition-all ease-in-out hover:scale-95'
+						onClick={handleGoogleSignIn}
 					>
-						<img src={img.google} alt='google' className='w-[30px]' />{' '}
+						<img src={img.google} alt='google' className='w-[25px]' />
 						<p className='text-[17px]'>Google</p>
 					</button>
 					<button
-						onClick={handleSignIn} // Call handleSignIn function when button is clicked
+						onClick={handleSignIn}
 						className='btn bg-[#252525] hover:bg-[#252526] text-white'
 					>
 						Войти

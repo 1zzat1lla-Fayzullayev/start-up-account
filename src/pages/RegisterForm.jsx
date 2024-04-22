@@ -32,7 +32,7 @@ function RegisterForm({ toggleForm }) {
 				email,
 				password
 			)
-			setErrorInput(false) // Reset errorInput state to false
+			setErrorInput(false)
 			navigate('/')
 		} catch (error) {
 			toast.error('Произошла ошибка при регистрации.')
@@ -51,7 +51,7 @@ function RegisterForm({ toggleForm }) {
 	return (
 		<>
 			<motion.div
-				className='font-Montserrat bg-[#171717] p-[15px] rounded-[10px]'
+				className='font-Montserrat backdrop-blur-lg blur-bg bg-[#17171755] p-[15px] rounded-[10px]'
 				initial={{ opacity: 0, scale: 0.7 }}
 				animate={{ opacity: 1, scale: 1 }}
 			>

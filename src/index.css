@@ -39,3 +39,8 @@ li {
 		/* min-height: 100%; */
 	}
 }
+
+.blur-bg {
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+}
