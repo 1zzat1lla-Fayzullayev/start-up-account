@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import HamburgerSwap from '../shared/ui/HamburgerSwap'
 import NumberModal from '../shared/ui/NumberModal'
 import { motion } from 'framer-motion'
-import { auth, logoutUser } from '../firebase/config'
+import { auth, db, logoutUser } from '../firebase/config'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { onAuthStateChanged } from 'firebase/auth'
 import userImg from '../assets/user.png'
+import { collection, doc, getDoc, getDocs } from 'firebase/firestore'
 
 function Navbar({ handleOpenSidebar }) {
 	const handleOpenModal = () => {
@@ -15,6 +16,7 @@ function Navbar({ handleOpenSidebar }) {
 	const [user] = useAuthState(auth)
 	const [userPhoto, setUserPhoto] = useState(null)
 	const [displayName, setDisplayName] = useState(null)
+	const [balance, setBalance] = useState(0)
 
 	const handleLogOut = async () => {
 		try {
@@ -32,10 +34,12 @@ function Navbar({ handleOpenSidebar }) {
 					setDisplayName(displayName || user.email)
 					setUserPhoto(photoURL || userImg)
 					localStorage.setItem('displayName', displayName)
+					fetchBalance()
 				} else {
 					setDisplayName(null)
 					setUserPhoto(userImg)
 					localStorage.removeItem('displayName')
+					fetchBalance(0)
 				}
 			} catch (e) {
 				console.error('Error fetching user profile: ', e.message)
@@ -44,6 +48,17 @@ function Navbar({ handleOpenSidebar }) {
 
 		return () => unsubscribe()
 	}, [])
+
+	const fetchBalance = async () => {
+		try {
+			const balanceDoc = await getDoc(doc(db, 'balance', 'balance'))
+			if (balanceDoc.exists()) {
+				setBalance(balanceDoc.data().balance)
+			}
+		} catch (err) {
+			console.error('Error fetching balance:', err)
+		}
+	}
 
 	return (
 		<>
@@ -55,14 +70,15 @@ function Navbar({ handleOpenSidebar }) {
 				<div className='flex w-full justify-end gap-4 md:gap-0 md:justify-between items-center'>
 					<div className='md:ml-[30px]'>
 						<button
-							className='bg-[#252525] rounded-[10px] h-[35px] w-[180px] md:w-[220px] transition-all duration-80 hover:scale-90 font-Montserrat'
+							className='bg-[#252525] rounded-[10px] h-[35px] w-[140px] md:w-[220px] transition-all duration-80 hover:scale-90 font-Montserrat'
 							onClick={handleOpenModal}
 						>
 							Nomer olish
 						</button>
 						<NumberModal />
 					</div>
-					<div className='mr-[20px]'>
+					<div className='mr-[20px] flex items-center gap-4'>
+						<div className='text-green-500 font-Montserrat'>{balance} USZ</div>
 						<div className='dropdown dropdown-end'>
 							<div tabIndex={0} role='button'>
 								{user ? (

@@ -10,6 +10,7 @@ function AdminPanel() {
 	const [inputValues, setInputValues] = useState({})
 	const [postOrPut, setPostOrPut] = useState(new Date().getTime())
 	const [products, setProducts] = useState([])
+	const [balance, setBalance] = useState('')
 	const [isEditing, setIsEditing] = useState(false)
 	const [selectedProduct, setSelectedProduct] = useState(null)
 
@@ -45,6 +46,23 @@ function AdminPanel() {
 		console.log(
 			`Adding number: ${inputValues.country} ${inputValues.phoneNumber} - ${inputValues.price}`
 		)
+	}
+
+	const handleAddBalance = async () => {
+		if (inputValues.balance) {
+			try {
+				const balanceRef = doc(db, 'balance', 'balance')
+				await setDoc(balanceRef, { balance: inputValues.balance })
+				setInputValues({ ...inputValues, balance: '' })
+
+				// Update the local state of balance
+				setBalance(inputValues.balance)
+
+				console.log('Balance added successfully')
+			} catch (error) {
+				console.error('Error adding balance:', error)
+			}
+		}
 	}
 
 	// Function to fetch products from Firestore
@@ -277,13 +295,40 @@ function AdminPanel() {
 									placeholder='Masalan, 10.000'
 								/>
 							</div>
-							<motion.button
-								whileHover={{ scale: 0.95 }}
-								onClick={() => handleAddNumber('products')}
-								className='bg-blue-600 py-2 px-6 rounded-md text-white font-semibold mb-4'
-							>
-								Nomer qo'shish
-							</motion.button>
+							<div className='mb-4'>
+								<label className='block text-gray-700 font-semibold mb-2'>
+									Balans:
+								</label>
+								<input
+									type='number'
+									value={inputValues.balance}
+									onChange={e =>
+										setInputValues(prevState => ({
+											...prevState,
+											balance: e.target.value,
+										}))
+									}
+									className='input input-bordered bg-[#252525] w-full p-2'
+									placeholder='Masalan, 10.000'
+								/>
+							</div>
+							<div className='flex gap-2'>
+								<motion.button
+									whileHover={{ scale: 0.95 }}
+									onClick={() => handleAddNumber('products')}
+									className='bg-blue-600 py-2 px-6 rounded-md text-white font-semibold mb-4'
+								>
+									Nomer qo'shish
+								</motion.button>
+								<motion.button
+									whileHover={{ scale: 0.95 }}
+									onClick={handleAddBalance}
+									className='bg-green-600 py-2 px-6 rounded-md text-white font-semibold mb-4'
+								>
+									Balans qo'shish
+								</motion.button>
+							</div>
+
 							{/* Display added products in the table */}
 							<table className='table table-fixed font-Montserrat'>
 								<tbody>
