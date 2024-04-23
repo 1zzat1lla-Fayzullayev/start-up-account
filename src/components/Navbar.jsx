@@ -91,7 +91,7 @@ function Navbar({ handleOpenSidebar }) {
 											</li>
 										)}
 										<li className='hover:bg-red-500 rounded-[10px]'>
-											<button onClick={handleLogOut}>Выход</button>
+											<button onClick={handleLogOut}>Chiqish</button>
 										</li>
 									</>
 								) : (
