@@ -240,7 +240,7 @@ function AdminPanel() {
 										}))
 									}
 									className='input input-bordered bg-[#252525] w-full p-2'
-									placeholder='Например, Узбекистан'
+									placeholder="Masalan, O'zbekiston"
 								/>
 							</div>
 							<div className='mb-4'>
@@ -257,7 +257,7 @@ function AdminPanel() {
 										}))
 									}
 									className='input input-bordered bg-[#252525] w-full p-2'
-									placeholder='Например, 998901234567'
+									placeholder='Masalan, 998901234567'
 								/>
 							</div>
 							<div className='mb-4'>
@@ -274,7 +274,7 @@ function AdminPanel() {
 										}))
 									}
 									className='input input-bordered bg-[#252525] w-full p-2'
-									placeholder='Например, 10 USD'
+									placeholder='Masalan, 10.000'
 								/>
 							</div>
 							<motion.button
