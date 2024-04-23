@@ -22,7 +22,7 @@ function RegisterForm({ toggleForm }) {
 			// Check if any of the input fields are empty
 			if (!fullName || !email || !password) {
 				setErrorInput(true)
-				toast.error('Пожалуйста, заполните все поля.')
+				toast.error('Iltimos, barcha maydonlarni toʻldiring.')
 				return
 			}
 
@@ -35,7 +35,7 @@ function RegisterForm({ toggleForm }) {
 			setErrorInput(false)
 			navigate('/')
 		} catch (error) {
-			toast.error('Произошла ошибка при регистрации.')
+			toast.error("Ro'yxatdan o'tish paytida xatolik yuz berdi.")
 			console.error('Error registering user:', error.message)
 		}
 	}
@@ -60,10 +60,10 @@ function RegisterForm({ toggleForm }) {
 					initial={{ y: -50, opacity: 0 }}
 					animate={{ y: 0, opacity: 1 }}
 				>
-					Регистрация
+					Roʻyxatdan oʻtish
 				</motion.h1>
 				<div className='flex flex-col gap-2 mt-[30px]'>
-					<label htmlFor='fullName'>Ваше имя</label>
+					<label htmlFor='fullName'>Username</label>
 					<input
 						type='text'
 						name='fullName'
@@ -74,7 +74,7 @@ function RegisterForm({ toggleForm }) {
 						}`}
 						placeholder='beeon'
 					/>
-					<label htmlFor='email'>Электронная почта</label>
+					<label htmlFor='email'>Elektron pochta</label>
 					<input
 						type='email'
 						name='email'
@@ -85,7 +85,7 @@ function RegisterForm({ toggleForm }) {
 						}`}
 						placeholder='beeon@gmail.com'
 					/>
-					<label htmlFor='password'>Пароль</label>
+					<label htmlFor='password'>Parolingiz</label>
 					<input
 						type='password'
 						name='password'
@@ -100,13 +100,13 @@ function RegisterForm({ toggleForm }) {
 						onClick={toggleForm}
 						className='underline text-blue-500 text-[15px] cursor-pointer'
 					>
-						Войти
+						Kirish uchun
 					</a>
 					<button
 						onClick={handleRegister}
 						className='btn bg-[#252525] hover:bg-[#252526] text-white'
 					>
-						Отправить
+						Roʻyxatdan oʻtish
 					</button>
 				</div>
 			</motion.div>

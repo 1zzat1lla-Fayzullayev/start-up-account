@@ -58,7 +58,7 @@ function Navbar({ handleOpenSidebar }) {
 							className='bg-[#252525] rounded-[10px] h-[35px] w-[180px] md:w-[220px] transition-all duration-80 hover:scale-90 font-Montserrat'
 							onClick={handleOpenModal}
 						>
-							Получить номер
+							Nomer olish
 						</button>
 						<NumberModal />
 					</div>
@@ -96,7 +96,7 @@ function Navbar({ handleOpenSidebar }) {
 									</>
 								) : (
 									<li>
-										<a href='/register'>Регистрация</a>
+										<a href='/register'>Roʻyxatdan oʻtish</a>
 									</li>
 								)}
 							</ul>

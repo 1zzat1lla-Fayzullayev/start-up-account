@@ -26,7 +26,7 @@ function ListSidebar({ openSidebarLink }) {
 							className='w-[30px] md:w-[40px]'
 						/>
 
-						<p className={'md:flex text-[12px] md:text-[16px]'}>Номера</p>
+						<p className={'md:flex text-[12px] md:text-[16px]'}>Nomerlar</p>
 					</div>
 				</li>
 			</Link>
@@ -47,7 +47,7 @@ function ListSidebar({ openSidebarLink }) {
 						/>
 
 						<p className={'md:flex text-[12px] md:text-[16px]'}>
-							Пополнить счет
+							Hisobni to'ldirish
 						</p>
 					</div>
 				</li>
@@ -69,7 +69,7 @@ function ListSidebar({ openSidebarLink }) {
 						/>
 
 						<p className={'md:flex text-[12px] md:text-[16px]'}>
-							Избранные номера
+							Sevimli raqamlar
 						</p>
 					</div>
 				</li>
@@ -91,7 +91,7 @@ function ListSidebar({ openSidebarLink }) {
 						/>
 
 						<p className={'md:flex text-[12px] md:text-[16px]'}>
-							История покупок
+							Sotib olish tarixi
 						</p>
 					</div>
 				</li>

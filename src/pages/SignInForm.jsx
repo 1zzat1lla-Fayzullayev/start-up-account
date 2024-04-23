@@ -27,7 +27,7 @@ function SignInForm({ toggleForm }) {
 		try {
 			if (!email || !password) {
 				setErrorInput(true)
-				toast.error('Пожалуйста, заполните все поля.')
+				toast.error('Iltimos, barcha maydonlarni toʻldiring.')
 				return
 			}
 			await signInUser(email, password)
@@ -36,7 +36,7 @@ function SignInForm({ toggleForm }) {
 			setFormData({ email: '', password: '' })
 		} catch (error) {
 			toast.error(
-				'Неверный адрес электронной почты или пароль. Пожалуйста, попробуйте еще раз.'
+				"Yaroqsiz elektron pochta manzili yoki parol. Iltimos, yana bir bor urinib ko'ring."
 			)
 		}
 	}
@@ -62,12 +62,12 @@ function SignInForm({ toggleForm }) {
 					initial={{ y: -50, opacity: 0 }}
 					animate={{ y: 0, opacity: 1 }}
 				>
-					Войти
+					Kirish
 				</motion.h1>
 				<div className='flex flex-col gap-2'>
 					{/* Email and password input fields */}
 					<div className='flex flex-col gap-2 mt-[30px]'>
-						<label htmlFor='email'>Электронная почта</label>
+						<label htmlFor='email'>Elektron pochta</label>
 						<input
 							type='email'
 							name='email'
@@ -78,7 +78,7 @@ function SignInForm({ toggleForm }) {
 							}`}
 							placeholder='beeon@gmail.com'
 						/>
-						<label htmlFor='password'>Пароль</label>
+						<label htmlFor='password'>Parol</label>
 						<input
 							type='password'
 							name='password'
@@ -95,7 +95,7 @@ function SignInForm({ toggleForm }) {
 						onClick={toggleForm}
 						className='underline text-blue-500 text-[15px] cursor-pointer'
 					>
-						Регистрация
+						Roʻyxatdan oʻtish
 					</a>
 					<button
 						className='flex justify-center items-center gap-2 bg-[#252525] rounded-[5px] p-[6px] transition-all ease-in-out hover:scale-95'
@@ -108,7 +108,7 @@ function SignInForm({ toggleForm }) {
 						onClick={handleSignIn}
 						className='btn bg-[#252525] hover:bg-[#252526] text-white'
 					>
-						Войти
+						Kirish
 					</button>
 				</div>
 			</motion.div>

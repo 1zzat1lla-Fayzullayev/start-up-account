@@ -94,7 +94,6 @@ function AdminPanel() {
 	}
 
 	// Function to open the modal for editing a product
-	// Function to open the modal for editing a product
 	const openEditModal = product => {
 		setIsEditing(true)
 		setSelectedProduct(product)
@@ -135,7 +134,7 @@ function AdminPanel() {
 								whileHover={{ x: 10 }}
 								className='bg-blue-600 w-full py-3 rounded-md text-white font-semibold uppercase tracking-wide mb-4'
 							>
-								Номера телефонов
+								Telefon raqamlari
 							</motion.button>
 						</div>
 					</div>
@@ -149,11 +148,11 @@ function AdminPanel() {
 								className='bg-white p-8 rounded-md shadow-md'
 							>
 								<h2 className='text-xl font-semibold mb-4'>
-									Редактирование продукта
+									Raqamni tahrirlash
 								</h2>
 								<div className='mb-4'>
 									<label className='block text-gray-700 font-semibold mb-2'>
-										Страна:
+										Mamlakat:
 									</label>
 									<input
 										type='text'
@@ -170,7 +169,7 @@ function AdminPanel() {
 								</div>
 								<div className='mb-4'>
 									<label className='block text-gray-700 font-semibold mb-2'>
-										Номер телефона:
+										Telefon raqam:
 									</label>
 									<input
 										type='number'
@@ -187,7 +186,7 @@ function AdminPanel() {
 								</div>
 								<div className='mb-4'>
 									<label className='block text-gray-700 font-semibold mb-2'>
-										Цена:
+										Narx:
 									</label>
 									<input
 										type='number'
@@ -210,14 +209,14 @@ function AdminPanel() {
 										}
 										className='bg-blue-600 py-2 px-6 rounded-md text-white font-semibold mr-4'
 									>
-										Сохранить
+										Saqlash
 									</motion.button>
 									<motion.button
 										whileHover={{ scale: 0.95 }}
 										onClick={closeModal}
 										className='bg-gray-400 py-2 px-6 rounded-md text-white font-semibold'
 									>
-										Закрыть
+										Yopish
 									</motion.button>
 								</div>
 							</motion.div>
@@ -229,7 +228,7 @@ function AdminPanel() {
 						<>
 							<div className='mb-4'>
 								<label className='block text-gray-700 font-semibold mb-2'>
-									Страна:
+									Mamlakat:
 								</label>
 								<input
 									type='text'
@@ -246,7 +245,7 @@ function AdminPanel() {
 							</div>
 							<div className='mb-4'>
 								<label className='block text-gray-700 font-semibold mb-2'>
-									Номер телефона:
+									Telefon raqam:
 								</label>
 								<input
 									type='number'
@@ -263,7 +262,7 @@ function AdminPanel() {
 							</div>
 							<div className='mb-4'>
 								<label className='block text-gray-700 font-semibold mb-2'>
-									Цена:
+									Narx:
 								</label>
 								<input
 									type='number'
@@ -283,7 +282,7 @@ function AdminPanel() {
 								onClick={() => handleAddNumber('products')}
 								className='bg-blue-600 py-2 px-6 rounded-md text-white font-semibold mb-4'
 							>
-								Добавить номер
+								Nomer qo'shish
 							</motion.button>
 							{/* Display added products in the table */}
 							<table className='table table-fixed font-Montserrat'>
@@ -302,14 +301,14 @@ function AdminPanel() {
 													onClick={() => openEditModal(product)}
 													className='bg-[#0094FF] px-[30px] py-[5px] rounded-[5px]'
 												>
-													Редактировать
+													Tahrirlash
 												</motion.button>
 												<motion.button
 													whileHover={{ scale: 0.9 }}
 													onClick={() => handleDeleteProduct(product.id)}
 													className='bg-red-500 px-[30px] py-[5px] rounded-[5px]'
 												>
-													Удалить
+													O'chirish
 												</motion.button>
 											</td>
 										</tr>
@@ -324,7 +323,7 @@ function AdminPanel() {
 					<input
 						type='password'
 						className='input input-bordered bg-[#252525] p-3'
-						placeholder='Пароль'
+						placeholder='Parol'
 						onChange={handleLogin}
 					/>
 				</div>

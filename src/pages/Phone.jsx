@@ -36,7 +36,7 @@ function Phone() {
 						{products.map(product => (
 							<tr
 								key={product.id}
-								className='flex flex-col md:flex-row items-center justify-center md:gap-[120px]'
+								className='flex flex-col md:flex-row items-center justify-center md:gap-[120px] w-full'
 							>
 								<td className='p-[1]'>{product.country}</td>
 								<td className='p-[1]'>{product.phoneNumber}</td>
@@ -46,7 +46,7 @@ function Phone() {
 										whileHover={{ scale: 0.9 }}
 										className='bg-[#0094FF] px-[30px] py-[5px] rounded-[5px]'
 									>
-										Купить
+										Sotib olish
 									</motion.button>
 								</td>
 							</tr>

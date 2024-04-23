@@ -27,7 +27,7 @@ function Register() {
 					className='absolute top-8 left-8 font-Montserrat cursor-pointer'
 					onClick={handleBackPage}
 				>
-					Назад
+					Orqaga
 				</motion.p>
 				{isRegistering ? (
 					<RegisterForm toggleForm={toggleForm} />
