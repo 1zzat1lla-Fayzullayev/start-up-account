@@ -1,26 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
-import { collection, getDocs } from 'firebase/firestore'
-import { db } from '../firebase/config'
+
 
 function Phone() {
-	const [products, setProducts] = useState([])
-	const [loading, setLoading] = useState(true)
-
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const querySnapshot = await getDocs(collection(db, 'products'))
-				const data = querySnapshot.docs.map(doc => doc.data())
-				setProducts(data)
-				setLoading(false) // Set loading to false once products are fetched
-			} catch (error) {
-				console.error('Error fetching products:', error)
-				setLoading(false) // Set loading to false in case of an error
-			}
-		}
-		fetchData()
-	}, [])
+	const [loading, setLoading] = useState(false)
+	
 
 	return (
 		<div>
@@ -33,7 +16,7 @@ function Phone() {
 			) : (
 				<table className='table table-fixed font-Montserrat'>
 					<tbody>
-						{products.map(product => (
+						{/* {products.map(product => (
 							<tr
 								key={product.id}
 								className='flex flex-col md:flex-row items-center justify-center md:gap-[120px] w-full'
@@ -50,7 +33,10 @@ function Phone() {
 									</motion.button>
 								</td>
 							</tr>
-						))}
+						))} */}
+						<tr>
+							<td>aaaaaaaaaa</td>
+						</tr>
 					</tbody>
 				</table>
 			)}

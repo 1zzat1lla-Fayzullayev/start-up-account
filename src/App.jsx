@@ -1,35 +1,54 @@
 // App.js
-import React from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import AdminPanel from './admin/AdminPanel'
 import Home from './components/Home'
 import Phone from './pages/Phone'
 import Card from './pages/Card'
 import HistoryPhone from './pages/HistoryPhone'
 import HistoryPayment from './pages/HistoryPayment'
-import Register from './pages/Register'
 import Layout from './layout/Layout'
-import AdminLayout from './layout/AdminLayout'
-import { motion } from 'framer-motion'
+import SignIn from './pages/SignIn'
 import { Toaster } from 'react-hot-toast'
+import SignUp from './pages/SignUp'
+
+export const loggedInContext = createContext()
+
+export const userLoggedIn = () => useContext(loggedInContext)
 
 function App() {
+	const [loggedIn, setLoggedIn] = useState(() => {
+		const storedLoggedIn = localStorage.getItem('loggedIn')
+		return storedLoggedIn ? JSON.parse(storedLoggedIn) : false
+	})
+
+	const registerUser = () => {
+		setIsRegistered(true)
+	}
+
+	const unregisterUser = () => {
+		setIsRegistered(false)
+	}
+
+	useEffect(() => {
+		localStorage.setItem('loggedIn', JSON.stringify(loggedIn))
+	}, [loggedIn])
+
 	return (
 		<>
 			<BrowserRouter>
-				<Routes>
-					<Route path='/' element={<Layout />}>
-						<Route index element={<Home />} />
-						<Route path='/phone' element={<Phone />} />
-						<Route path='/card' element={<Card />} />
-						<Route path='/history-phone' element={<HistoryPhone />} />
-						<Route path='/history-payment' element={<HistoryPayment />} />
-					</Route>
-					<Route path='/register' element={<Register />} />
-					<Route path='/admin' element={<AdminLayout />}>
-						<Route index element={<AdminPanel />} />
-					</Route>
-				</Routes>
+				<loggedInContext.Provider value={{ loggedIn, setLoggedIn }}>
+					<Routes>
+						<Route path='/' element={<Layout />}>
+							<Route index element={<Home />} />
+							<Route path='/phone' element={<Phone />} />
+							<Route path='/card' element={<Card />} />
+							<Route path='/history-phone' element={<HistoryPhone />} />
+							<Route path='/history-payment' element={<HistoryPayment />} />
+						</Route>
+						<Route path='/signin' element={<SignIn />} />
+						<Route path='/signup' element={<SignUp />} />
+					</Routes>
+				</loggedInContext.Provider>
 			</BrowserRouter>
 			<Toaster position='top-center' reverseOrder={false} />
 		</>

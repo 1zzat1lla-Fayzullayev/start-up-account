@@ -1,63 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import HamburgerSwap from '../shared/ui/HamburgerSwap'
 import NumberModal from '../shared/ui/NumberModal'
 import { motion } from 'framer-motion'
-import { auth, db, logoutUser } from '../firebase/config'
-import { useAuthState } from 'react-firebase-hooks/auth'
-import { onAuthStateChanged } from 'firebase/auth'
 import userImg from '../assets/user.png'
-import { collection, doc, getDoc, getDocs } from 'firebase/firestore'
+import { loggedInContext } from '../App'
+import { Link } from 'react-router-dom'
 
 function Navbar({ handleOpenSidebar }) {
-	const handleOpenModal = () => {
-		document.getElementById('my_modal_3').showModal()
-	}
-
-	const [user] = useAuthState(auth)
-	const [userPhoto, setUserPhoto] = useState(null)
-	const [displayName, setDisplayName] = useState(null)
-	const [balance, setBalance] = useState(0)
-
-	const handleLogOut = async () => {
-		try {
-			await logoutUser()
-		} catch (e) {
-			console.error('Error logging out: ', e.message)
-		}
-	}
+	const { loggedIn, setLoggedIn } = useContext(loggedInContext)
+	console.log(loggedIn)
 
 	useEffect(() => {
-		const unsubscribe = onAuthStateChanged(auth, user => {
-			try {
-				if (user) {
-					const { displayName, photoURL } = user
-					setDisplayName(displayName || user.email)
-					setUserPhoto(photoURL || userImg)
-					localStorage.setItem('displayName', displayName)
-					fetchBalance()
-				} else {
-					setDisplayName(null)
-					setUserPhoto(userImg)
-					localStorage.removeItem('displayName')
-					fetchBalance(0)
-				}
-			} catch (e) {
-				console.error('Error fetching user profile: ', e.message)
-			}
-		})
+		localStorage.setItem('loggedIn', JSON.stringify(loggedIn))
+	}, [loggedIn])
 
-		return () => unsubscribe()
-	}, [])
+	console.log(loggedIn)
 
-	const fetchBalance = async () => {
-		try {
-			const balanceDoc = await getDoc(doc(db, 'balance', 'balance'))
-			if (balanceDoc.exists()) {
-				setBalance(balanceDoc.data().balance)
-			}
-		} catch (err) {
-			console.error('Error fetching balance:', err)
-		}
+	const handleLogOut = () => {
+		setLoggedIn(false)
+	}
+
+	const handleOpenModal = () => {
+		document.getElementById('my_modal_3').showModal()
 	}
 
 	return (
@@ -78,41 +42,31 @@ function Navbar({ handleOpenSidebar }) {
 						<NumberModal />
 					</div>
 					<div className='mr-[20px] flex items-center gap-4'>
-						<div className='text-green-500 font-Montserrat'>{balance} USZ</div>
 						<div className='dropdown dropdown-end'>
 							<div tabIndex={0} role='button'>
-								{user ? (
-									<img
-										src={userPhoto}
-										alt='user'
-										className='rounded-full w-[50px]'
-									/>
-								) : (
-									<img
-										src={userImg}
-										alt='user'
-										className='rounded-full w-[50px]'
-									/>
-								)}
+								{/* Render user image here */}
+								<img
+									src={userImg}
+									alt='user'
+									className='rounded-full w-[50px]'
+								/>
 							</div>
 							<ul
 								tabIndex={0}
 								className='dropdown-content z-[1] menu p-2 shadow rounded-box w-52 bg-[#252525] mt-[10px] font-Montserrat'
 							>
-								{user ? (
+								{loggedIn ? (
 									<>
-										{displayName && (
-											<li>
-												<p>{displayName}</p>
-											</li>
-										)}
+										<li className='text-white'>
+											<p>{loggedIn.username}</p>
+										</li>
 										<li className='hover:bg-red-500 rounded-[10px]'>
 											<button onClick={handleLogOut}>Chiqish</button>
 										</li>
 									</>
 								) : (
 									<li>
-										<a href='/register'>Roʻyxatdan oʻtish</a>
+										<Link to='/signin'>Tizimga kirish</Link>
 									</li>
 								)}
 							</ul>
